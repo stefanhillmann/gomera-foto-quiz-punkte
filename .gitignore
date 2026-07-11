@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Rohtext-Scrapes des Forums - bleiben lokal, sind ueber download_thread.py neu erzeugbar
+thread_archive/pages/
+thread_archive/posts.jsonl
+
+# Enthalten Post-Auszuege aus der LLM-Extraktion (Review/Debug), nicht fuer Veroeffentlichung
+thread_archive/point_events_review.jsonl
+thread_archive/point_events_failed.jsonl
+
+# Lokales Report-Artefakt, nicht fuer das Web-Tool benoetigt
+punkte_tabelle.pdf
+
+# Editor / OS / Claude Code
+.claude/
+.DS_Store
+.python-version

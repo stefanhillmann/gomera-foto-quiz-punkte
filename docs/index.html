@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Gomera Foto-Quiz — Punkte-Explorer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="page-header">
+  <h1>La Gomera Foto-Quiz — Punkte-Explorer</h1>
+  <p class="subtitle">
+    Ausgewertete Punktevergaben aus dem
+    <a id="thread-link" href="#" target="_blank" rel="noopener noreferrer">Foto-Ratespiel-Thread</a>
+    im gomeraforum.de
+  </p>
+</header>
+
+<main>
+  <section class="controls" aria-label="Filter">
+    <div class="control-group">
+      <label for="name-search">Teilnehmer suchen</label>
+      <input id="name-search" type="search" placeholder="Name…" autocomplete="off">
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Jahre</span>
+      <div id="year-checkboxes" class="year-checkboxes"></div>
+      <div class="year-buttons">
+        <button id="years-all" type="button" class="btn-link">alle</button>
+        <button id="years-none" type="button" class="btn-link">keine</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label><input id="toggle-year-columns" type="checkbox"> Jahres-Spalten anzeigen</label>
+    </div>
+  </section>
+
+  <section class="table-section">
+    <table id="participant-table" aria-describedby="table-caption">
+      <caption id="table-caption" class="sr-only">Teilnehmer-Rangliste</caption>
+      <thead>
+        <tr id="table-head-row"></tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <p id="empty-state" class="empty-state" hidden>Keine Teilnehmer für diese Filter gefunden.</p>
+  </section>
+
+  <section class="charts-section">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Rangliste</h2>
+        <div class="chart-controls">
+          <label for="bar-metric">Metrik</label>
+          <select id="bar-metric">
+            <option value="total_points">Punkte</option>
+            <option value="total_wins">Siege</option>
+          </select>
+          <label for="bar-topn">Top</label>
+          <select id="bar-topn">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="all">alle</option>
+          </select>
+        </div>
+      </div>
+      <canvas id="bar-chart" height="320"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Punkte pro Jahr</h2>
+        <button id="clear-selection" type="button" class="btn-link">Auswahl zurücksetzen</button>
+      </div>
+      <canvas id="line-chart" height="320"></canvas>
+      <p class="hint">Teilnehmer über die Checkbox „im Diagramm“ in der Tabelle hinzufügen (max. 6). Ohne Auswahl werden die aktuellen Top 5 nach Gesamtpunkten angezeigt.</p>
+    </div>
+  </section>
+</main>
+
+<dialog id="detail-dialog">
+  <form method="dialog" class="detail-header">
+    <h2 id="detail-name"></h2>
+    <button type="submit" class="btn-close" aria-label="Schließen">×</button>
+  </form>
+  <p id="detail-summary" class="detail-summary"></p>
+  <div class="detail-table-wrap">
+    <table id="detail-table">
+      <thead>
+        <tr>
+          <th>Datum</th>
+          <th>Von</th>
+          <th>Punkte</th>
+          <th>davon Sonderpunkte</th>
+          <th>Beitrag</th>
+        </tr>
+      </thead>
+      <tbody id="detail-table-body"></tbody>
+    </table>
+  </div>
+</dialog>
+
+<footer class="page-footer">
+  <p id="generated-info"></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

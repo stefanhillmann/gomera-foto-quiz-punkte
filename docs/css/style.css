@@ -1,0 +1,227 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #666666;
+  --border: #dddddd;
+  --accent: #2563eb;
+  --row-alt: #f7f7f9;
+  --header-bg: #f0f1f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14151a;
+    --fg: #eaeaea;
+    --muted: #a0a0a8;
+    --border: #33343a;
+    --accent: #6ea8ff;
+    --row-alt: #1b1c22;
+    --header-bg: #1f2027;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.45;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+}
+
+.page-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 1rem;
+}
+
+.page-header h1 { margin: 0 0 0.4rem; font-size: 1.6rem; }
+.subtitle { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.subtitle a { color: var(--accent); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-end;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--row-alt);
+}
+
+.control-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.control-label, label { font-size: 0.85rem; color: var(--muted); }
+
+#name-search {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg);
+  min-width: 200px;
+}
+
+.year-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 420px;
+}
+
+.year-checkboxes label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.year-buttons { display: flex; gap: 0.75rem; }
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.table-section { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+thead th {
+  background: var(--header-bg);
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+thead th.sorted-asc::after { content: " ▲"; font-size: 0.7em; }
+thead th.sorted-desc::after { content: " ▼"; font-size: 0.7em; }
+
+tbody td {
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) { background: var(--row-alt); }
+
+.name-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  text-decoration: underline;
+  text-align: left;
+}
+
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.empty-state { color: var(--muted); padding: 1rem 0; }
+
+.charts-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .charts-section { grid-template-columns: 1fr 1fr; }
+}
+
+.chart-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.chart-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.chart-card-header h2 { margin: 0; font-size: 1.05rem; }
+.chart-controls { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; }
+.chart-controls select { padding: 0.2rem 0.4rem; }
+
+.hint { color: var(--muted); font-size: 0.8rem; margin-top: 0.5rem; }
+
+dialog#detail-dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 1.25rem;
+  max-width: 640px;
+  width: 92vw;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+dialog#detail-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 0.25rem;
+}
+
+.detail-header h2 { margin: 0; font-size: 1.2rem; }
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.detail-summary { color: var(--muted); margin: 0 0 0.75rem; font-size: 0.9rem; }
+.detail-table-wrap { max-height: 50vh; overflow: auto; }
+
+#detail-table { font-size: 0.85rem; }
+#detail-table a { color: var(--accent); }
+
+.page-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
