@@ -1,6 +1,6 @@
 import { filteredMetrics } from "./data.js";
 
-const PALETTE = ["#2563eb", "#dc2626", "#16a34a", "#d97706", "#7c3aed", "#0891b2"];
+const PALETTE = ["#1878a8", "#3a7d5c", "#c1662f", "#736b5e", "#1c8f8f", "#a5503f"];
 
 let barChart = null;
 let lineChart = null;

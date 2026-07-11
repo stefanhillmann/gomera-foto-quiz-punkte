@@ -4,11 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Gomera Foto-Quiz — Punkte-Explorer</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="page-header">
-  <h1>La Gomera Foto-Quiz — Punkte-Explorer</h1>
+  <div class="brand-row">
+    <svg class="brand-icon" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
+      <g>
+        <path d="M22 11 L14 26 L29 26 Z" fill="var(--fg)"/>
+        <path d="M13 6 L4 26 L18 26 Z" fill="var(--fg)"/>
+        <path d="M0 32 L0 26 L4 22 L8 26 L12 22 L16 26 L20 22 L24 26 L28 22 L32 26 L32 32 Z" fill="var(--accent-secondary)"/>
+      </g>
+    </svg>
+    <h1>La Gomera Foto-Quiz — Punkte-Explorer</h1>
+  </div>
   <p class="subtitle">
     Ausgewertete Punktevergaben aus dem
     <a id="thread-link" href="#" target="_blank" rel="noopener noreferrer">Foto-Ratespiel-Thread</a>
@@ -105,6 +115,7 @@
 
 <footer class="page-footer">
   <p id="generated-info"></p>
+  <p class="footer-note">Punkte-Explorer für das Foto-Ratespiel · benannt nach dem Silbo Gomero, der gepfiffenen Sprache La Gomeras.</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>

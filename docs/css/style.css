@@ -1,23 +1,49 @@
 :root {
   color-scheme: light dark;
-  --bg: #ffffff;
-  --fg: #1a1a1a;
-  --muted: #666666;
-  --border: #dddddd;
-  --accent: #2563eb;
-  --row-alt: #f7f7f9;
-  --header-bg: #f0f1f4;
+
+  /* Farben - angelehnt an La Gomera: getuenchte Haeuser, Basaltgestein,
+     Atlantikblau, Laurisilva-Wald, Terrassen-Erde */
+  --bg: #f7f5ef;
+  --fg: #201d1a;
+  --muted: #6b655c;
+  --border: #ded7c8;
+  --border-strong: #9c9078;
+  --accent: #0a5d84;
+  --accent-secondary: #1f6b45;
+  --row-alt: #f0ede2;
+  --header-bg: #e9e2d2;
+
+  --font-heading: Iowan Old Style, "Palatino Linotype", Palatino, "URW Palladio L", P052, Georgia, serif;
+
+  --motif: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cpath d='M0 10 Q15 4 30 10 T60 10 T90 10 T120 10' fill='none' stroke='%23ded7c8' stroke-width='1' stroke-opacity='0.45'/%3E%3Cpath d='M0 28 Q15 22 30 28 T60 28 T90 28 T120 28' fill='none' stroke='%23ded7c8' stroke-width='1' stroke-opacity='0.4'/%3E%3Cpath d='M0 46 Q15 40 30 46 T60 46 T90 46 T120 46' fill='none' stroke='%23ded7c8' stroke-width='1' stroke-opacity='0.35'/%3E%3C/svg%3E");
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --space-1: 0.35rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #14151a;
-    --fg: #eaeaea;
-    --muted: #a0a0a8;
-    --border: #33343a;
-    --accent: #6ea8ff;
-    --row-alt: #1b1c22;
-    --header-bg: #1f2027;
+    --bg: #15181c;
+    --fg: #e8e4d9;
+    --muted: #9a9488;
+    --border: #3c4038;
+    --border-strong: #666b5a;
+    --accent: #7ec2e6;
+    --accent-secondary: #63c090;
+    --row-alt: #1b1e1a;
+    --header-bg: #20241a;
+
+    --motif: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cpath d='M0 10 Q15 4 30 10 T60 10 T90 10 T120 10' fill='none' stroke='%233c4038' stroke-width='1' stroke-opacity='0.6'/%3E%3Cpath d='M0 28 Q15 22 30 28 T60 28 T90 28 T120 28' fill='none' stroke='%233c4038' stroke-width='1' stroke-opacity='0.5'/%3E%3Cpath d='M0 46 Q15 40 30 46 T60 46 T90 46 T120 46' fill='none' stroke='%233c4038' stroke-width='1' stroke-opacity='0.4'/%3E%3C/svg%3E");
   }
 }
 
@@ -34,16 +60,28 @@ body {
 main {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1.25rem 3rem;
+  padding: 0 1.25rem var(--space-7);
 }
 
 .page-header {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 1.25rem 1rem;
+  padding: var(--space-6) 1.25rem var(--space-4);
+  background-image: var(--motif);
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 120px 60px;
 }
 
-.page-header h1 { margin: 0 0 0.4rem; font-size: 1.6rem; }
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-icon { flex: none; }
+
+.page-header h1 { margin: 0 0 0.4rem; font-size: 1.6rem; font-family: var(--font-heading); }
 .subtitle { margin: 0; color: var(--muted); font-size: 0.95rem; }
 .subtitle a { color: var(--accent); }
 
@@ -55,22 +93,22 @@ main {
 .controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: var(--space-5);
   align-items: flex-end;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--row-alt);
 }
 
-.control-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.control-group { display: flex; flex-direction: column; gap: var(--space-1); }
 .control-label, label { font-size: 0.85rem; color: var(--muted); }
 
 #name-search {
   padding: 0.4rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
   background: var(--bg);
   color: var(--fg);
   min-width: 200px;
@@ -79,7 +117,7 @@ main {
 .year-checkboxes {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
   max-width: 420px;
 }
 
@@ -91,10 +129,10 @@ main {
   color: var(--fg);
   border: 1px solid var(--border);
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
-.year-buttons { display: flex; gap: 0.75rem; }
+.year-buttons { display: flex; gap: var(--space-3); }
 
 .btn-link {
   background: none;
@@ -148,13 +186,13 @@ tbody tr:nth-child(even) { background: var(--row-alt); }
 
 .num { text-align: right; font-variant-numeric: tabular-nums; }
 
-.empty-state { color: var(--muted); padding: 1rem 0; }
+.empty-state { color: var(--muted); padding: var(--space-4) 0; }
 
 .charts-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
 }
 
 @media (min-width: 900px) {
@@ -163,8 +201,8 @@ tbody tr:nth-child(even) { background: var(--row-alt); }
 
 .chart-card {
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
 }
 
 .chart-card-header {
@@ -172,19 +210,25 @@ tbody tr:nth-child(even) { background: var(--row-alt); }
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
-.chart-card-header h2 { margin: 0; font-size: 1.05rem; }
+.chart-card-header h2 { margin: 0; font-size: 1.05rem; font-family: var(--font-heading); }
 .chart-controls { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; }
-.chart-controls select { padding: 0.2rem 0.4rem; }
+.chart-controls select {
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--fg);
+}
 
-.hint { color: var(--muted); font-size: 0.8rem; margin-top: 0.5rem; }
+.hint { color: var(--muted); font-size: 0.8rem; margin-top: var(--space-2); }
 
 dialog#detail-dialog {
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   padding: 1.25rem;
   max-width: 640px;
   width: 92vw;
@@ -201,7 +245,7 @@ dialog#detail-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
   margin: 0 0 0.25rem;
 }
 
-.detail-header h2 { margin: 0; font-size: 1.2rem; }
+.detail-header h2 { margin: 0; font-size: 1.2rem; font-family: var(--font-heading); }
 
 .btn-close {
   background: none;
@@ -212,7 +256,7 @@ dialog#detail-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
   color: var(--muted);
 }
 
-.detail-summary { color: var(--muted); margin: 0 0 0.75rem; font-size: 0.9rem; }
+.detail-summary { color: var(--muted); margin: 0 0 var(--space-3); font-size: 0.9rem; }
 .detail-table-wrap { max-height: 50vh; overflow: auto; }
 
 #detail-table { font-size: 0.85rem; }
@@ -221,7 +265,13 @@ dialog#detail-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
 .page-footer {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 1rem 1.25rem 2rem;
+  padding: var(--space-4) 1.25rem var(--space-6);
   color: var(--muted);
   font-size: 0.8rem;
+  background-image: var(--motif);
+  background-repeat: repeat-x;
+  background-position: top;
+  background-size: 120px 60px;
 }
+
+.footer-note { margin: var(--space-2) 0 0; }
